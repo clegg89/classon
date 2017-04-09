@@ -13,7 +13,7 @@ import threading
 from upload import ftp_open, upload
 
 import gpio
-from gpio import set,cleanup
+from gpio import set, cleanup, setup
 
 setup(led_amber,gpio.OUT,initial=True)
 

@@ -13,6 +13,7 @@ IMAGE_FEATURES += "debug-tweaks ssh-server-openssh"
 # IMAGE_ROOTFS_EXTRA_SPACE_append for adding extra space to the target rootfs image.  
    
 IMAGE_INSTALL += "\
+	classon-rootfs\
 	i2c-tools \
 	v4l-utils \
 	iperf3 \

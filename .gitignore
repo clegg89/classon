@@ -1,0 +1,46 @@
+# Blacklist files/folders in same directory as the .gitignore file
+/*
+
+# Whitelist some files
+!.gitignore
+!.gitmodules
+!sbinit.sh
+!README.md
+
+# Ignore all files named .DS_Store or ending with .log
+**/.DS_Store
+**.log
+
+# Whitelist some directories
+
+!meta-classon/
+meta-classon/recipes-example/classon-rootfs/files/*
+
+!rep-deps/
+rep-deps/*
+!rep-deps/bitbake/
+rep-deps/bitbake/*
+!rep-deps/bitbake/.git
+!meta-fsl-arm/
+meta-fsl-arm/*
+!meta-fsl-arm/.git
+!repo-deps/meta-openembedded/
+repo-deps/meta-openembedded/*
+!repo-deps/meta-openembedded/.git
+!repo-deps/meta-solidrun-arm-imx6/
+repo-deps/meta-solidrun-arm-imx6/*
+!repo-deps/meta-solidrun-arm-imx6/.git
+!repo-deps/meta-yocto/
+repo-deps/meta-yocto/*
+!repo-deps/meta-yocto/.git
+!openembedded-core/
+openembedded-core/*
+!openembedded-core/.git
+
+!build/
+build/*
+!build/conf/
+build/conf/*
+!build/conf/bblayers.conf
+!build/conf/local.conf
+

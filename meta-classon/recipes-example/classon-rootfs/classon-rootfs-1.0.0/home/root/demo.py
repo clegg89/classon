@@ -16,6 +16,11 @@ led_amber=90
 led_green=65
 button_switch=95
 
+setup(led_red,gpio.OUT,initial=True)
+setup(led_amber,gpio.OUT,initial=True)
+setup(led_green,gpio.OUT)
+setup(button_switch,gpio.IN)
+
 def updateIndicators(stop_event):
   blinker=0
   while not stop_event.wait(0.1):

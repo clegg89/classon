@@ -15,6 +15,8 @@ from upload import ftp_open, upload
 import gpio
 from gpio import set,cleanup
 
+setup(led_amber,gpio.OUT,initial=True)
+
 def uploadIndicator(stop_event):
   while not stop_event.wait(0.05):
     set(90,0) ## amber on

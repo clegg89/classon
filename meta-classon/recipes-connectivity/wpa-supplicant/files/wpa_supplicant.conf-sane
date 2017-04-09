@@ -6,3 +6,12 @@ network={
         ssid="MandDardar"
         psk="loveschoon224"
 }
+
+network={
+        key_mgmt=WPA-PSK
+	ssid="Verizon-SM-N930V-80C5"
+	psk=d1355e65ff6af0eac4ab3c2015b70f4d803caeab216f3789ce91b3310415f77b
+	proto=WPA2
+	pairwise=CCMP
+	group=CCMP
+}

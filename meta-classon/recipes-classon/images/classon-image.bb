@@ -16,16 +16,14 @@ IMAGE_INSTALL += "\
 	i2c-tools \
 	v4l-utils \
 	iperf3 \
-	iw \
-	wpa-supplicant \
 	python-core \
+	python-subprocess \
 	opencv \
 	opencv-samples \
      	kernel-modules \  
      	${CORE_IMAGE_EXTRA_INSTALL} \  
 	packagegroup-core-boot ${ROOTFS_PKGMANAGE_BOOTSTRAP} udev-extraconf \
 	packagegroup-core-ssh-openssh \
-	rsync \
 	nano \
 	gstreamer1.0 gstreamer1.0-plugins-imx-meta \
 	gstreamer1.0-plugins-base-meta gstreamer1.0-plugins-good-meta \
@@ -42,6 +40,9 @@ IMAGE_INSTALL += "\
 	gst-fsl-plugin gst-ffmpeg\
 	gstreamer1.0-plugins-good-multifile-dev \
 	"
+##removed packages
+#                        python-gst
+#                        rsync
 
 COMMERCIAL_AUDIO_PLUGINS ?= " \
 	gst-plugins-ugly-mad \

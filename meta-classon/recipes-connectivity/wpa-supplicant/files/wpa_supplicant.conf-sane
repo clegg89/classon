@@ -3,6 +3,16 @@ ctrl_interface_group=0
 update_config=1
 
 network={
+        ssid="mhvzw"
+        psk="matthilt"
+}
+
+network={
+        ssid="Manuel's iphone"
+        psk="qsc6pzwtz2cv3"
+}
+
+network={
         ssid="MandDardar"
         psk="loveschoon224"
 }

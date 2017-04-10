@@ -17,7 +17,7 @@ led_green=65
 button_switch=95
 
 setup(led_red,gpio.OUT,initial=True)
-setup(led_amber,gpio.OUT,initial=True)
+#setup(led_amber,gpio.OUT,initial=True)
 setup(led_green,gpio.OUT)
 setup(button_switch,gpio.IN)
 

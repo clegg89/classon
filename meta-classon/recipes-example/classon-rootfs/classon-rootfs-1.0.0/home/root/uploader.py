@@ -14,7 +14,10 @@ import ftplib
 from upload import ftp_open, upload
 
 import gpio
-from gpio import setup,set,cleanup
+
+from gpio import set, cleanup, setup
+
+led_amber=90
 
 setup(90,gpio.OUT,initial=True) ##amber led, output, off
 
@@ -85,8 +88,8 @@ def demo():
    while try_again:
      try_again = False
      try:
-       #ftp=ftp_open("192.168.1.100", ("demowest", "endorphine6"))
-       ftp=ftp_open("demos-mbp", ("demowest", "endorphine6"))
+       #ftp=ftp_open("joshs-mbp", ("joshwest", "endorphine6"))
+       ftp=ftp_open("ec2-52-38-55-200.us-west-2.compute.amazonaws.com", ("classondemo", "manuel"))       
        ftp.cwd("hummingboard/")
      except ValueError as e:  
        print "value error:", e

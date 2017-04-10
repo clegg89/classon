@@ -17,14 +17,16 @@ led_green=65
 button_switch=95
 
 setup(led_red,gpio.OUT,initial=True)
-setup(led_amber,gpio.OUT,initial=True)
 setup(led_green,gpio.OUT)
 setup(button_switch,gpio.IN)
 
 def updateIndicators(stop_event):
   blinker=0
   while not stop_event.wait(0.1):
-    v=read(button_switch)
+    try:
+      v=read(button_switch)
+    except:
+      print 'updateIndicators(): read() error, v=', v
     #print "button-switch", v
     if v: ##disabled the blinker## and blinker<15:
       set(led_red,0)
@@ -170,8 +172,10 @@ def demo():
 
    print "gst process finished, rc=", gstproc.returncode
    #gstproc.kill() #terminate()
-   os.kill(gstproc.pid, signal.SIGINT)
-   print 'signal.SIGINT:', signal.SIGINT
+   try:
+     os.kill(gstproc.pid, signal.SIGINT)
+   finally:
+     print 'signal.SIGINT:', signal.SIGINT
 
 
 if __name__ == "__main__":

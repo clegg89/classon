@@ -9,13 +9,14 @@ import traceback, sys
 import fnmatch 
 
 import threading
+import ftplib
 
 from upload import ftp_open, upload
 
 import gpio
-from gpio import set,cleanup
+from gpio import setup,set,cleanup
 
-setup(led_amber,gpio.OUT,initial=True)
+setup(90,gpio.OUT,initial=True) ##amber led, output, off
 
 def uploadIndicator(stop_event):
   while not stop_event.wait(0.05):
@@ -84,14 +85,13 @@ def demo():
    while try_again:
      try_again = False
      try:
-       ftp=ftp_open("joshs-mbp", ("joshwest", "endorphine6"))
+       #ftp=ftp_open("192.168.1.100", ("demowest", "endorphine6"))
+       ftp=ftp_open("demos-mbp", ("demowest", "endorphine6"))
        ftp.cwd("hummingboard/")
      except ValueError as e:  
        print "value error:", e
      except OSError as e:                                                   
        print "OS error:", e                                                 
-     except KeyboardInterrupt:
-       print "user interrupted with ctrl-C"
      except socket.gaierror as e:
        print "probably not connected to internet"
        try_again = True
@@ -120,8 +120,19 @@ def demo():
 
 if __name__ == "__main__":
   print "starting uploader.py..."
-  try:
-    demo()
-  except KeyboardInterrupt:
-    pass
-  
+  while True:
+    try:
+      demo()
+    except KeyboardInterrupt:
+      pass
+      print "user interrupted with ctrl-C"
+      break
+    except socket.error,e:
+      print 'socket error:', e
+      time.sleep(30)
+    except ftplib.all_errors, e:
+      print 'ftplib error:', e
+      time.sleep(30)
+    except:
+      type, value, tb = sys.exc_info()
+      traceback.print_exc()

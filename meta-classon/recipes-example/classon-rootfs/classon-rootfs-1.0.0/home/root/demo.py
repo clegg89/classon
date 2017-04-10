@@ -54,7 +54,7 @@ def delold():
   try:
     index_fossil = os.path.getmtime("trilobite")
   except: ## there was an error reading/accessing file trilobite, for now we just return
-    pass
+    #pass
     return
 
   for root, dirs, files in os.walk("."):
@@ -65,7 +65,8 @@ def delold():
           #print "del", os.path.join(root,name), ", T:", os.path.getmtime(name)
           os.remove( os.path.join(root,name) )
       except:
-        pass
+        #pass
+	print "File IO error ... shit"
 
 def button_status():
   changed=True
@@ -170,8 +171,12 @@ def demo():
 
    print "gst process finished, rc=", gstproc.returncode
    #gstproc.kill() #terminate()
-   os.kill(gstproc.pid, signal.SIGINT)
-   print 'signal.SIGINT:', signal.SIGINT
+   try:
+     os.kill(gstproc.pid, signal.SIGINT)
+   except OSError,e:
+     print 'os.kill error:', e
+   finally:
+     print 'signal.SIGINT:', signal.SIGINT
 
 
 if __name__ == "__main__":
@@ -183,7 +188,7 @@ if __name__ == "__main__":
     try:
       demo()
     except KeyboardInterrupt:
-      pass
+      #pass
       break
     restarts = restarts + 1
     print "...restarting({0}) gst recorder...".format( restarts )

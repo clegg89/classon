@@ -60,7 +60,7 @@ def delold(ftp):
   try:
     index_fossil = os.path.getmtime("trilobite")
   except:
-    pass
+    #pass
     return
 
   ## this can be optimized: use the following list and iterate until 'trilobite' is found
@@ -139,3 +139,4 @@ if __name__ == "__main__":
     except:
       type, value, tb = sys.exc_info()
       traceback.print_exc()
+
